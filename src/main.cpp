@@ -5,7 +5,7 @@ const int stepPin = 2;  // PUL+
 const int dirPin = 3;   // DIR+
 const int enPin = 4;    // ENA+
 
-const int stopButtonPin = 5; // Pin connected to a stop button
+//const int stopButtonPin = 5; // Pin connected to a stop button
 
 
 // speed and duration
@@ -18,7 +18,7 @@ void setup() {
   pinMode(stepPin, OUTPUT);
   pinMode(dirPin, OUTPUT);
   pinMode(enPin, OUTPUT);
-  pinMode(stopButtonPin, INPUT_PULLUP);
+  //pinMode(stopButtonPin, INPUT_PULLUP);
   // Enable the driver
   digitalWrite(enPin, LOW);
 }
@@ -29,10 +29,11 @@ void moveMotor(unsigned long duration) {
   unsigned long startTime = millis();
   while (millis() - startTime < duration) {
     // Check if the stop button is pressed
-    if (digitalRead(stopButtonPin) == LOW) {
+    //if (digitalRead(stopButtonPin) == LOW) {
       // Stop the motor
-      break;
-    }
+     // break;
+   // }
+    Serial.println("Toggling Step Pin");
     digitalWrite(stepPin, HIGH);
     delayMicroseconds(stepDelay);
     digitalWrite(stepPin, LOW);
